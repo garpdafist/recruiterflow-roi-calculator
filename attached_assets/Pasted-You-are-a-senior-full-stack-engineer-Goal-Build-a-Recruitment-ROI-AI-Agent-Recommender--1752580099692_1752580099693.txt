@@ -1,0 +1,65 @@
+You are a senior full-stack engineer.
+
+🛠  Goal  
+Build a **Recruitment ROI + AI-Agent Recommender** web app (single-page). The UI copies the competitor layout (form on the left, results panel on the right) but adds a section that lists Recruiterflow’s AI Agents that solve the user’s bottlenecks.
+
+🏗  Tech stack  
+- Front-end: **React + TypeScript + Vite**  
+- Styling: **Tailwind CSS** (dark-mode ready)  
+- State: React hooks (useState / useMemo)  
+- No backend    → all calc logic runs client-side  
+- Deploy as a single `main.tsx` entry; keep codebase minimal & readable.
+
+📐  Layout  
+Left column – **Form**  
+1. `numEmployees`   (Number, default 5, suffix “people”)  
+2. `placementsPerWeek` (Number, placeholder “e.g. 3”)  
+3. `avgFeePerPlacement` (Number, placeholder “e.g. $8 000”)  
+4. `currentSystem` (Select → [“Bullhorn”, “JobAdder”, “Spreadsheet”, “Other”])  
+5. `workDaysPerWeek` (Number, default 5)
+
+Right column – **Results panel** (updates live)  
+• “Your current annual revenue”  
+• “Admin hours per employee per week” – assume **6 h** baseline.  
+• “Admin hours saved with Recruiterflow AI” = baseline × **0.35**  
+• “Extra placements possible” = hours-saved ÷ **4 h** (avg time per placement)  
+• “Incremental revenue” = extra-placements × avgFeePerPlacement  
+• “ROI %” = incremental-revenue ÷ (numEmployees × $ 99 monthly × 12)
+
+AI Agent Recommender (below the metrics)  
+Render a card for each agent with name + one-liner.  
+- **Email & Phone Lookup Agent** – cuts prospect-research time  
+- **Job-Change Alerts** – opens warm BD convos  
+- **AI Note Taker** – auto-summarises calls  
+- **Encoding Agent** – updates CRM fields  
+- **Scorecard Agent** – speeds up interview scoring  
+- **Summarisation Agent** – creates candidate overview  
+- **Email Generation Agent** – writes follow-ups
+
+Highlight agents *dynamically* based on form inputs:  
+• If `currentSystem === "Spreadsheet"` → mark all agents.  
+• If placementsPerWeek < 3 → emphasise “Job-Change Alerts” & “Lookup”.  
+• If numEmployees > 10 → emphasise “AI Note Taker” & “Encoding”.  
+
+UI details  
+- Sticky results panel on ≥ md screens; stacked on mobile.  
+- Smooth number-animation (react-spring) for outputs.  
+- Tailwind card with soft shadow, rounded-2xl, padding-6.  
+- “Reset” button clears the form.  
+- “Book Demo” primary button (shadcn/ui - Button) links to a `#` placeholder.
+
+🧪  Testing  
+Add simple Jest test that ensures ROI formula returns 0 if hours-saved ≤ 0.
+
+📄  File structure  
+- `src/`  
+  └─ `components/CalculatorForm.tsx`  
+  └─ `components/ResultsPanel.tsx`  
+  └─ `types.ts` (FormState)  
+  └─ `App.tsx`  
+  └─ `main.tsx`  
+- `tailwind.config.ts` (extend colors teal/emerald palette)
+
+🎨  Copy placeholders like “world’s first AI-first CRM” → leave TODO comments so the marketing team can edit.
+
+🔚  Output only code – no explanations.

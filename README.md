@@ -2,7 +2,6 @@
 
 A React-based interactive ROI calculator that helps recruitment agencies calculate their potential return on investment with Recruiterflow's AI-powered CRM. Features dynamic calculations, AI agent recommendations, and competitor comparisons.
 
-![Recruiterflow ROI Calculator](https://via.placeholder.com/800x400/007bff/ffffff?text=Recruiterflow+ROI+Calculator)
 
 ## ✨ Features
 

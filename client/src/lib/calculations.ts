@@ -6,12 +6,36 @@ export function calculateROI(formState: FormState): ROIResults {
   // Current Revenue: Monthly placements × average fee × 12 months
   const currentRevenue = (placementsPerMonth || 0) * (avgFeePerPlacement || 0) * 12;
   
-  // Admin Hours Saved/week: 2 × number of days they work in a week × number of employees
-  const adminHoursSaved = 2 * workDaysPerWeek * numEmployees;
+  // Real recruiter calculation based on actual time savings:
+  // Time saving per week per recruiter:
+  // - Resume screening: 4hrs
+  // - Scheduling: 4hrs  
+  // - Tagging/Manual Reports: 8hrs
+  // - TAT from KMC: 10hrs (using lower estimate)
+  // Total: 26 hours per week per recruiter
   
-  // Extra Placements: 25% × current placements (monthly)
-  const extraPlacementsMonthly = 0.25 * (placementsPerMonth || 0);
-  const extraPlacements = extraPlacementsMonthly / 4.33; // Convert to weekly for display
+  const timeSavingPerWeek = 26; // hours per recruiter per week
+  const timeSavingPerMonth = timeSavingPerWeek * 4; // 104 hours per month per recruiter
+  const totalTimeSavingPerMonth = timeSavingPerMonth * numEmployees; // Total hours saved
+  
+  // Convert to working days (assuming 8 hours per day)
+  const workingDaysSavedPerMonth = totalTimeSavingPerMonth / 8;
+  const adminHoursSaved = totalTimeSavingPerMonth; // Total hours saved per month
+  
+  // Placement cycle improvement: 21 days instead of 30 days
+  // This means 90 days cycle: 3 placements becomes ~4.5 placements
+  // Improvement factor: 4.5/3 = 1.5 (50% more placements)
+  const placementImprovementFactor = 1.5;
+  
+  // Current placements in 90 days
+  const currentPlacementsIn90Days = (placementsPerMonth || 0) * 3;
+  
+  // Improved placements in 90 days
+  const improvedPlacementsIn90Days = currentPlacementsIn90Days * placementImprovementFactor;
+  
+  // Extra placements per month
+  const extraPlacementsMonthly = (improvedPlacementsIn90Days - currentPlacementsIn90Days) / 3;
+  const extraPlacements = extraPlacementsMonthly;
   
   // Incremental Revenue: Extra placements × average fee × 12 months
   const incrementalRevenue = extraPlacementsMonthly * (avgFeePerPlacement || 0) * 12;

@@ -58,7 +58,7 @@ export default function ResultsPanel({ formState }: ResultsPanelProps) {
               <div className="font-semibold text-lg">
                 <AnimatedNumber value={results.extraPlacements} decimals={1} />
               </div>
-              <div className="text-muted-foreground">Extra Placements/Week</div>
+              <div className="text-muted-foreground">Extra Placements/Month</div>
             </div>
           </div>
         </CardContent>
@@ -75,9 +75,9 @@ export default function ResultsPanel({ formState }: ResultsPanelProps) {
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Hours Saved/Week</span>
+              <span className="text-sm text-muted-foreground">Hours Saved/Month</span>
               <span className="font-semibold text-primary">
-                <AnimatedNumber value={results.adminHoursSaved} decimals={1} />
+                <AnimatedNumber value={results.adminHoursSaved} decimals={0} />
               </span>
             </div>
             <div className="flex justify-between items-center">
@@ -92,6 +92,18 @@ export default function ResultsPanel({ formState }: ResultsPanelProps) {
             <div className="text-xs text-muted-foreground/70 mt-1 pl-0">
               Based on Recruiterflow at $99/employee/month
             </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Calculation Method */}
+      <Card className="bg-muted/30">
+        <CardContent className="p-4">
+          <div className="text-xs text-muted-foreground space-y-2">
+            <div className="font-medium text-foreground mb-2">How we calculate your ROI:</div>
+            <div>• <strong>Time savings:</strong> 26 hrs/week per recruiter (resume screening, scheduling, tagging, KMC tasks)</div>
+            <div>• <strong>Faster placements:</strong> 21-day cycle vs 30-day cycle = 50% more placements</div>
+            <div>• <strong>Based on real recruiter data</strong> from agencies using Recruiterflow's AI agents</div>
           </div>
         </CardContent>
       </Card>

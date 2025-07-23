@@ -41,11 +41,13 @@ Preferred communication style: Simple, everyday language.
 - **Real-time Calculations**: Updates automatically as user types
 - **Input Validation**: Basic validation for numeric inputs
 
-### ROI Calculation Logic
-- **Current Revenue**: Weekly placements × average fee × 52 weeks
-- **Admin Hours Saved**: 6 hours baseline × 35% reduction × number of employees
-- **Extra Placements**: Hours saved ÷ 4 hours per placement
-- **Incremental Revenue**: Extra placements × average fee × 52 weeks
+### ROI Calculation Logic (Updated with Real Recruiter Data)
+- **Current Revenue**: Monthly placements × average fee × 12 months
+- **Time Savings**: 26 hours per week per recruiter (4hrs resume screening + 4hrs scheduling + 8hrs tagging + 10hrs TAT from KMC)
+- **Monthly Hours Saved**: 104 hours per recruiter per month × number of employees
+- **Placement Cycle Improvement**: 21 days vs 30 days = 50% more placements (3 placements in 90 days becomes 4.5)
+- **Extra Placements**: 50% improvement factor applied to current placement volume
+- **Incremental Revenue**: Extra placements × average fee × 12 months
 - **ROI Percentage**: Incremental revenue ÷ annual cost (employees × $99/month × 12)
 
 ### AI Agent Recommendations
@@ -98,6 +100,14 @@ Preferred communication style: Simple, everyday language.
 The application is designed to be deployed as a single-page app with a lightweight Express backend primarily for potential future API endpoints and database operations.
 
 ## Recent Changes: Latest modifications with dates
+
+### January 23, 2025 - Real Recruiter Calculation Logic Implementation
+- **Updated ROI Calculations** - Implemented real recruiter time savings data (26 hours/week per recruiter)
+- **Specific Task Breakdown** - Resume screening (4hrs), scheduling (4hrs), tagging/reports (8hrs), TAT from KMC (10hrs)
+- **Placement Cycle Improvement** - Added 21-day vs 30-day placement cycle logic (50% improvement)
+- **Hybrid Testimonials** - Combined colored metric cards with profile photos and personal quotes
+- **Calculation Transparency** - Added explanation section showing how ROI is calculated
+- **Monthly Time Display** - Updated results panel to show monthly hours saved instead of weekly
 
 ### January 15, 2025 - Brand Identity Implementation
 - **Brand Colors Applied** - Updated to Recruiterflow's official color palette (#007bff primary, #013f85 secondary, #0a98ff accent)

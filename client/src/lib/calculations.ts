@@ -7,15 +7,18 @@ export function calculateROI(formState: FormState): ROIResults {
   const currentRevenue = (placementsPerMonth || 0) * (avgFeePerPlacement || 0) * 12;
   
   // Real recruiter calculation based on actual time savings:
-  // Time saving per week per recruiter:
-  // - Resume screening: 4hrs
-  // - Scheduling: 4hrs  
-  // - Tagging/Manual Reports: 8hrs
-  // - TAT from KMC: 10hrs (using lower estimate)
-  // Total: 26 hours per week per recruiter
+  // Time saving per month per recruiter (from your breakdown):
+  // - Resume screening: 4hrs/week × 4 weeks = 16hrs/month
+  // - Scheduling: 4hrs/week × 4 weeks = 16hrs/month  
+  // - Tagging/Manual Reports: 8hrs/week × 4 weeks = 32hrs/month
+  // - TAT from KMC: 10hrs/week × 4 weeks = 40hrs/month
+  // Total: 104 hours per month per recruiter
   
-  const timeSavingPerWeek = 26; // hours per recruiter per week
-  const timeSavingPerMonth = timeSavingPerWeek * 4; // 104 hours per month per recruiter
+  const resumeScreeningPerMonth = 16; // 4hrs/week × 4 weeks
+  const schedulingPerMonth = 16; // 4hrs/week × 4 weeks
+  const taggingPerMonth = 32; // 8hrs/week × 4 weeks
+  const kmcPerMonth = 40; // 10hrs/week × 4 weeks
+  const timeSavingPerMonth = resumeScreeningPerMonth + schedulingPerMonth + taggingPerMonth + kmcPerMonth; // 104 hours
   const totalTimeSavingPerMonth = timeSavingPerMonth * numEmployees; // Total hours saved
   
   // Convert to working days (assuming 8 hours per day)
